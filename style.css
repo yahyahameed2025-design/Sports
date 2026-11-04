@@ -1,0 +1,243 @@
+:root{
+  /* التخطيط: بطاقات سميكة بحدود داكنة وظلال مزاحة، وكل صف بلون زاهٍ خاص به */
+  --ink:#26194a;
+  --paper:#f7f5ff;
+  --pink:#ff5c93;
+  --orange:#ff9f1c;
+  --teal:#12c2b0;
+  --blue:#4c8dff;
+  --yellow:#ffd23f;
+  --green:#3ddc97;
+  --font-display:'Cairo','Tajawal',system-ui,sans-serif;
+  --font-body:'Tajawal','Cairo',system-ui,sans-serif;
+  --line:3px solid var(--ink);
+  --shadow:5px 5px 0 var(--ink);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;min-height:100%}
+body{
+  font-family:var(--font-body);
+  font-size:17px;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 92% 6%, rgba(255,210,63,.45) 0, transparent 24%),
+    radial-gradient(circle at 4% 28%, rgba(255,92,147,.28) 0, transparent 26%),
+    radial-gradient(circle at 96% 72%, rgba(18,194,176,.28) 0, transparent 26%),
+    radial-gradient(circle at 8% 96%, rgba(76,141,255,.30) 0, transparent 26%),
+    var(--paper);
+  background-attachment:fixed;
+  line-height:1.6;
+}
+button{font:inherit;color:inherit;cursor:pointer}
+h1,h2,h3{font-family:var(--font-display);margin:0;text-wrap:balance;line-height:1.3}
+:focus-visible{outline:4px solid var(--blue);outline-offset:3px}
+
+/* الشريط العلوي */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;gap:12px;
+  padding:12px 16px;
+  background:var(--yellow);
+  border-bottom:var(--line);
+}
+.menu-wrap{position:relative}
+.menu-btn{
+  width:50px;height:50px;display:grid;place-items:center;
+  background:#fff;border:var(--line);border-radius:14px;box-shadow:3px 3px 0 var(--ink);
+  transition:transform .12s, box-shadow .12s;
+}
+.menu-btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.menu{
+  position:absolute;top:calc(100% + 10px);inset-inline-start:0;min-width:200px;
+  background:#fff;border:var(--line);border-radius:16px;box-shadow:var(--shadow);
+  padding:8px;display:flex;flex-direction:column;gap:6px;
+}
+.menu button{
+  display:flex;align-items:center;gap:10px;width:100%;text-align:start;
+  padding:12px 14px;border:2px solid transparent;border-radius:10px;background:transparent;
+  font-family:var(--font-display);font-weight:800;font-size:18px;
+}
+.menu button:hover{background:#fff4c7}
+.menu button.current{background:var(--teal);border-color:var(--ink)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:900;font-size:24px}
+
+/* الحاوية */
+main{max-width:760px;margin:0 auto;padding:24px 16px 80px;display:flex;flex-direction:column;gap:20px}
+.page-title{font-size:32px;font-weight:900;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.chip{
+  display:inline-block;padding:2px 14px;border:var(--line);border-radius:999px;background:var(--pink);
+  font-size:18px;font-weight:800;
+}
+.back{
+  align-self:flex-start;display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;border:var(--line);border-radius:999px;background:#fff;
+  font-weight:700;box-shadow:3px 3px 0 var(--ink);
+}
+
+/* مربع الإضافة */
+.add-box{
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  width:100%;padding:28px 16px;
+  background:#fff;border:3px dashed var(--ink);border-radius:22px;
+  font-family:var(--font-display);font-weight:800;font-size:24px;
+  transition:transform .15s, background .15s;
+}
+.add-box:hover{background:#fff4c7;transform:rotate(-.6deg) scale(1.01)}
+.add-box .plus{
+  width:52px;height:52px;display:grid;place-items:center;flex:none;
+  border:var(--line);border-radius:50%;background:var(--green);font-size:34px;line-height:1;
+  box-shadow:3px 3px 0 var(--ink);
+}
+
+/* بطاقات الصفوف */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+.card{
+  position:relative;border:var(--line);border-radius:22px;box-shadow:var(--shadow);
+  transition:transform .15s, box-shadow .15s;
+}
+.card:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.card-main{
+  display:flex;flex-direction:column;align-items:flex-start;gap:6px;
+  width:100%;min-height:130px;padding:20px 18px;text-align:start;
+  background:transparent;border:0;border-radius:inherit;
+}
+.card-main strong{font-family:var(--font-display);font-size:25px;font-weight:900;word-break:break-word;padding-inline-end:34px}
+.card-main span{
+  padding:1px 12px;border:2px solid var(--ink);border-radius:999px;background:rgba(255,255,255,.75);
+  font-weight:700;font-size:15px;
+}
+.c0{background:var(--pink)} .c1{background:var(--orange)} .c2{background:var(--teal)}
+.c3{background:var(--blue)} .c4{background:var(--yellow)} .c5{background:var(--green)}
+
+.x{
+  width:36px;height:36px;display:grid;place-items:center;flex:none;
+  border:2px solid var(--ink);border-radius:50%;background:#fff;font-size:22px;line-height:1;font-weight:700;
+}
+.x:hover{background:#ffd9e4}
+.card .x{position:absolute;top:10px;inset-inline-end:10px}
+
+/* قائمة الطلاب */
+.slist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.srow{display:flex;align-items:center;gap:10px}
+.sbar{
+  position:relative;flex:1;display:flex;align-items:center;gap:14px;overflow:hidden;
+  min-height:62px;padding:8px 14px;text-align:start;
+  background:#fff;border:var(--line);border-radius:18px;box-shadow:4px 4px 0 var(--ink);
+  transition:transform .12s;
+}
+.sbar:hover{transform:translate(-2px,-2px)}
+.sbar .fill{
+  position:absolute;top:0;bottom:0;inset-inline-start:0;background:var(--green);
+  transition:width .5s cubic-bezier(.2,.8,.2,1);
+}
+.sbar > :not(.fill){position:relative}
+.sbar .sn{
+  width:38px;height:38px;display:grid;place-items:center;flex:none;
+  border:2px solid var(--ink);border-radius:50%;background:var(--yellow);
+  font-family:var(--font-display);font-weight:900;font-variant-numeric:tabular-nums;
+}
+.sbar .sname{flex:1;font-weight:700;font-size:19px;word-break:break-word}
+.sbar .spct{
+  padding:0 12px;border:2px solid var(--ink);border-radius:999px;background:#fff;
+  font-weight:800;font-size:15px;font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.sbar.full .spct{background:var(--ink);color:#fff}
+
+/* صفحة الطالب */
+.profile{
+  display:flex;flex-direction:column;gap:14px;padding:20px;
+  background:#fff;border:var(--line);border-radius:22px;box-shadow:var(--shadow);
+}
+.profile-head{display:flex;align-items:center;gap:14px}
+.profile-head .sn{
+  width:52px;height:52px;display:grid;place-items:center;flex:none;
+  border:var(--line);border-radius:50%;background:var(--pink);
+  font-family:var(--font-display);font-weight:900;font-size:24px;
+}
+.meter{position:relative;height:30px;overflow:hidden;border:var(--line);border-radius:999px;background:#eef0ff}
+.meter .fill{position:absolute;top:0;bottom:0;inset-inline-start:0;background:var(--green);transition:width .4s}
+.meter span{position:relative;display:block;text-align:center;font-weight:800;font-size:15px;line-height:24px;font-variant-numeric:tabular-nums}
+.qform{display:flex;flex-direction:column;gap:18px}
+.qitem{
+  display:flex;flex-direction:column;gap:8px;padding:16px;
+  background:#fff;border:var(--line);border-radius:18px;box-shadow:4px 4px 0 var(--ink);
+}
+.qitem label{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:19px}
+.qitem .qn{
+  width:32px;height:32px;display:grid;place-items:center;flex:none;
+  border:2px solid var(--ink);border-radius:50%;background:var(--teal);font-size:16px;
+}
+
+/* حقول وأزرار */
+.field{
+  width:100%;padding:12px 14px;font:inherit;color:var(--ink);
+  background:#fff;border:var(--line);border-radius:14px;
+}
+textarea.field{resize:vertical;min-height:64px}
+.field:focus{outline:4px solid var(--blue);outline-offset:2px}
+.btn{
+  padding:12px 26px;border:var(--line);border-radius:14px;box-shadow:4px 4px 0 var(--ink);
+  font-family:var(--font-display);font-weight:800;font-size:18px;
+  transition:transform .1s, box-shadow .1s;
+}
+.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--ink)}
+.btn.primary{background:var(--green)}
+.btn.alt{background:var(--yellow)}
+.btn.danger{background:var(--pink)}
+.btn.ghost{background:#fff}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+
+/* رسائل */
+.note{
+  padding:16px 18px;background:#fff;border:var(--line);border-radius:18px;
+  display:flex;flex-direction:column;gap:12px;align-items:flex-start;
+}
+.note.warn{background:#fff4c7}
+.empty{text-align:center;font-weight:500;opacity:.75;margin:4px 0}
+
+/* إعدادات: قائمة الأسئلة */
+.qrow{display:flex;align-items:center;gap:10px}
+.qtext{
+  flex:1;display:flex;align-items:center;gap:12px;padding:12px 14px;
+  background:#fff;border:var(--line);border-radius:16px;box-shadow:4px 4px 0 var(--ink);font-weight:700;word-break:break-word;
+}
+.qtext .qn{
+  width:32px;height:32px;display:grid;place-items:center;flex:none;
+  border:2px solid var(--ink);border-radius:50%;background:var(--orange);font-family:var(--font-display);font-weight:900;font-size:16px;
+}
+.x.edit{background:var(--yellow)}
+
+/* النافذة المنبثقة */
+.overlay{
+  position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:16px;
+  background:rgba(38,25,74,.55);overflow-y:auto;
+}
+.modal{
+  width:min(100%,460px);display:flex;flex-direction:column;gap:14px;padding:22px;
+  background:#fff;border:var(--line);border-radius:24px;box-shadow:8px 8px 0 var(--ink);
+  animation:pop .22s cubic-bezier(.2,1.2,.4,1);
+}
+.modal h2{font-size:26px;font-weight:900}
+.m-body{display:flex;flex-direction:column;gap:10px}
+.m-body label{font-weight:700}
+.m-actions{display:flex;gap:12px;flex-wrap:wrap}
+.err{margin:0;min-height:0;color:#b0124a;font-weight:700}
+.err:empty{display:none}
+@keyframes pop{from{transform:scale(.9) rotate(-1deg);opacity:0}to{transform:none;opacity:1}}
+
+.toast{
+  position:fixed;bottom:22px;inset-inline:16px;margin-inline:auto;width:fit-content;max-width:calc(100% - 32px);z-index:60;
+  padding:12px 20px;background:var(--ink);color:#fff;border-radius:999px;font-weight:700;
+  border:3px solid #fff;box-shadow:0 0 0 3px var(--ink);
+}
+
+@media (max-width:420px){
+  .page-title{font-size:27px}
+  .add-box{font-size:21px}
+  .btn{padding:12px 20px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
